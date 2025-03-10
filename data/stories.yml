@@ -1,0 +1,42 @@
+version: "3.1"
+
+stories:
+
+- story: открыть счет для ИП
+  steps:
+    - intent: open_account
+    - action: utter_open_account
+    - intent: IP_acc
+    - action: utter_IP_acc
+    - action: utter_turnover
+    - intent: provide_turnover
+    - action: utter_turnover_response
+    - action: utter_manager
+    - intent: thank
+    - action: utter_welcome
+    - action: utter_goodbye
+
+- story: открыть счет для ООО
+  steps:
+    - intent: open_account
+    - action: utter_open_account
+    - intent: OOO_acc
+    - action: utter_OOO_acc
+    - action: utter_turnover
+    - intent: provide_turnover
+    - action: utter_turnover_response
+    - action: utter_manager
+    - intent: thank
+    - action: utter_welcome
+    - action: utter_goodbye
+
+- story: вежливый ответ
+  steps:
+    - intent: thank
+    - action: utter_welcome
+    - action: utter_goodbye
+
+- story: прощание
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye

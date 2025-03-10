@@ -1,0 +1,28 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: Прощание
+  steps:
+  - user: |
+      Пока-пока!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - user: |
+      Ты бот?
+    intent: bot_challenge
+  - action: utter_iamabot
+
+- story: тест открытия счета
+  steps:
+  - user: |
+      Какие документы нужны для открытия счета?
+    intent: open_account
+  - action: utter_open_account
+  - user: |
+      Инд. предприниматель
+    intent: IP_acc
+  - action: utter_IP_acc

@@ -1,0 +1,9 @@
+version: "3.1"
+stories:
+- story: тест открытия счета (C:\Users\turbo\PycharmProjects\chat_bot\tests\test_stories.yml)
+  steps:
+  - intent: open_account
+  - action: utter_open_account
+  - intent: IP_acc
+  - action: utter_IP_acc
+  - action: action_listen  # predicted: utter_turnover
