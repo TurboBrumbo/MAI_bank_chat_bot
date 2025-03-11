@@ -89,27 +89,36 @@
 
     <script>
         function sendMessage() {
-            const userInput = document.getElementById('user-input');
-            const message = userInput.value.trim();
-            if (message === "") return;
+        const userInput = document.getElementById('user-input');
+        const message = userInput.value.trim();
+        if (message === "") return;
 
-            // Добавляем сообщение пользователя в чат
-            addMessage('user', message);
-            userInput.value = '';
+        // Добавляем сообщение пользователя в чат
+        addMessage('user', message);
+        userInput.value = '';
 
-            // Отправляем сообщение на сервер
-            fetch('/send_message', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ message: message }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Добавляем ответ бота в чат
-                addMessage('bot', data.response);
-            });
+        // Отправляем сообщение на сервер
+        fetch('/send_message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: message }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Обрабатываем все ответы бота
+            if (data.responses && Array.isArray(data.responses)) {
+                data.responses.forEach(response => {
+                    addMessage('bot', response);
+                });
+            } else {
+                console.error("Ошибка: ответ от сервера не содержит массив responses.");
+            }
+        })
+        .catch(error => {
+            console.error("Ошибка при отправке сообщения:", error);
+        });
         }
 
         function addMessage(sender, message) {

@@ -40,3 +40,21 @@ stories:
   steps:
     - intent: goodbye
     - action: utter_goodbye
+
+- story: Доки - обороты
+  steps:
+    - intent: OOO_acc
+    - action: utter_OOO_acc
+    - action: utter_turnover
+
+- story: Доки - обороты
+  steps:
+    - intent: IP_acc
+    - action: utter_IP_acc
+    - action: utter_turnover
+
+- story: Обороты - тариф
+  steps:
+    - intent: provide_turnover
+    - action: utter_turnover_response
+    - action: utter_manager
