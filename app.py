@@ -21,16 +21,21 @@ def send_message():
 
     response = requests.post(rasa_url, json=payload)
 
+    print("Rasa response status code:", response.status_code)
+    print("Rasa response JSON:", response.json())
+
     if response.status_code == 200:
         rasa_response = response.json()
         if rasa_response:
-            bot_response = rasa_response[0]['text']
+            bot_responses = [msg['text'] for msg in rasa_response if 'text' in msg]
         else:
-            bot_response = "Извините, я не могу ответить."
+            bot_responses = ["Извините, я не могу ответить."]
     else:
-        bot_response = "Ошибка при обращении к Rasa."
+        bot_responses = ["Ошибка при обращении к Rasa."]
 
-    return jsonify({'response': bot_response})
+    print("Bot responses:", bot_responses)
+
+    return jsonify({'responses': bot_responses})
 
 
 if __name__ == '__main__':
