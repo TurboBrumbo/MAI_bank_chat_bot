@@ -35,7 +35,7 @@
 Примечание: для подключения к серверу используется библиотека `aiogram`, которая по умолчанию скачивается последней версии. Rasa работает только с версиями ниже 2.26. Поэтому при появлении ошибок необходимо удалить эту библиотеку и выполнить команду `pip install aiogram==2.25.2`
 
 ## Тестирование бота
-Для тестирования бота необходимо ввести в консоль команду `rasa test --model models/20250310-220540-polynomial-leaf.tar.gz --stories tests/test_stories.yml --out results 2>&1 | tee results/test_results.txt`
+Для тестирования бота необходимо ввести в консоль команду `rasa test --model models/20250311-161927-radioactive-buffet.tar.gz --stories tests/test_stories.yml --out results 2>&1 | tee results/test_results.txt`
 
 Результаты сохраняются по пути `results/test_results.txt`, в котором можно ознакомиться с основными метриками для оценки алгоритмов машинного обучения
 
